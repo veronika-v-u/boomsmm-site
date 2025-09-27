@@ -16,6 +16,7 @@ body{
     max-width: 1920px;
     margin: 0 auto;
     box-sizing: border-box;
+    background-color: var(--color-bg-light);
 }
 
 header{
@@ -376,6 +377,7 @@ button:hover {
 .teams{
   display: flex; 
   gap: 15px;
+  justify-content: unset;
 }
 
 .team_main{
@@ -384,12 +386,18 @@ button:hover {
   align-items: flex-start;
 }
 
+.teams.main-row {
+  width: 85%;
+  justify-content: flex-start;
+}
+
 .team_main img{
   width: 450px;
 }
 
-.team_main p{
-  font-size: 18px;
+.teams.main-row p{
+  width: 500px;
+  font-size: 15px;
 }
 
 #teams img{
@@ -400,7 +408,7 @@ button:hover {
 .teams h3{
   text-transform: uppercase;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .teams p{
@@ -693,6 +701,12 @@ button:hover {
   align-items: center;
 }
 
+.istore-case .feedback p{
+  display: flex;
+  align-items: center;      /* по вертикали */
+  justify-content: center;  /* по горизонтали */
+
+}
 
 .link_tg_b{
   display: flex;
