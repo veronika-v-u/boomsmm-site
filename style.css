@@ -5,6 +5,7 @@
   --color-bg-light:  #FFFFFF;   /* светлый фон */
   --color-bg-dark:   #F5F5F5;   /* тёмный фон */
   --color-text:      #2B2B2B;   /* основной текст */
+  --color-backgraund: #DED5D7;
   --content-max-w: 1152px;
 }
 
@@ -43,7 +44,7 @@ header{
   margin: 0;           
   padding: 0;
   gap: 30px; 
-  margin-right: 60px;
+  margin-right: 20px;
 }
 
 nav ul li {
@@ -58,6 +59,11 @@ nav ul li a {
 
 nav ul li a:hover {
     color: var(--color-accent);
+}
+
+.media img{
+  width: 20px;
+  padding-right: 20px;
 }
 
 .phone a{
@@ -102,7 +108,7 @@ nav ul li a:hover {
   text-transform: uppercase;
   line-height: 1;
   padding-left: 62px;
-  padding-top: 108px;
+  padding-top: 50px;
   margin: 0;
 }
 
@@ -115,17 +121,17 @@ nav ul li a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 350px;
-  height: 73px;
+  width: 280px;
+  height: 60px;
   border-radius: 45px;
   border-style: none;
-  background-color: var(--color-accent);
+  background-color: var(--color-primary);
   color: var(--color-bg-light);
   padding: 0 30px;
 }
 
 .hero_content button p{
-  font-size: 25px;
+  font-size: 18px;
 }
 button {
   cursor: pointer;
@@ -138,7 +144,7 @@ button:hover {
 
 .hero_content button img{
   padding-left: 10px;
-  width: 37.07px;
+  width: 30px;
 }
 
 .tags{
@@ -184,9 +190,10 @@ button:hover {
 .benefits_list{
   width: 375.51px;
   height: 303.76px;
-  background-image: url('resurse/bckgrd_g.svg');
+  background-color: var(--color-backgraund);
   background-repeat: no-repeat;
   font-weight: light;
+  border-radius: 45px;
 }
 
 .benefits_list h3{
@@ -196,13 +203,14 @@ button:hover {
 }
 
 .benefits_list p{
-  font-size: 15px;
+  font-size: 16px;
   width: 350px;
   padding-left: 25px;
+  width: 330px;
 }
 
 #pink_list{
-   background-image: url('resurse/bckgrd_p.svg');
+   background-color: var(--color-accent);
    color: var(--color-bg-light);
 }
 
@@ -211,21 +219,12 @@ button:hover {
 }
 
 #blue_list{
-  background-image: url('resurse/bckgrd_b.svg');
+  background-color: var(--color-primary);
   color: var(--color-bg-light);
 }
 
 .img_list{
   position: relative;
-}
-
-
-#heart_list{
-  background-image: url('resurse/bckgrd_n2.svg');
-}
-
-#geo_list{
-  background-image: url('resurse/bckgrd_n.svg');
 }
 
 .competencies{
@@ -267,39 +266,99 @@ button:hover {
 .Review{
   display: flex;
   justify-content: center;
-  align-items: center;
+
   flex-direction: column;
 }
 
 .Reviews{
-  display: flex;
-  flex-wrap: wrap;        
-  justify-content: center;
-  gap: 10px;
+  display: flex;     
+  gap: 20px;
+  overflow-x: auto;               
+  scroll-behavior: smooth;         
+  -webkit-overflow-scrolling: touch; 
+}
+
+.Reviews::-webkit-scrollbar {
+  display: none;
+}
+
+.Reviews {
+  -ms-overflow-style: none;  /* IE/Edge */
+  scrollbar-width: none;     /* Firefox */
 }
 
 .Review h2{
   font-size: 30px;
   padding-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Reviews_list{
-  background-image: url('resurse/bckgrd_n3.svg');
   padding-left: 20px;
-  padding-top: 20px;
-  font-size: 9.5px;
-  background-repeat: no-repeat;
-  height: 455px;
-  width: 277.45px;
-  height: 304.92px;
+  font-size: 15px;
+  width: 370px;
+  height: 460px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 45px;
+  margin-bottom: 20px;
+}
+
+.Reviews_list h3{
+  text-align: center;
+  justify-content: flex-end; 
+}
+
+.Reviews_img img{
+  width: 370px;
+  border-radius: 45px;
+}
+
+.Reviews_block {
+  position: relative;
+}
+
+.Reviews_img img {
+  display: block;
+  height: auto;
+  position: relative;
+  top: -33.33%;
+  padding-left: 10px;
+}
+
+.Reviews_img {
+  position: relative;
+  z-index: 1;
+}
+  
+.Reviews_list {
+  position: relative;
+  margin-top: -50%;     
+  padding-top: 20px; 
+  padding-bottom: 30px;    
+  height: 480px;           
+  display: flex;
+  flex-direction: column;
+  align-items: center;       
+  z-index: 5;
+  background-color: var(--color-bg-light);
+}
+
+.Reviews_list .professions {
+  margin-bottom: 30px; 
+  justify-content: flex-end; 
+  padding-top: 0;
+  padding-bottom: 40px;
 }
 
 .professions {
   font-weight: light;
+  text-align: center;
 }
 
 .Reviews_list p{
-  width: 250px;
+  width: 350px;
 }
 
 .team{
@@ -310,19 +369,34 @@ button:hover {
 }
 
 .team h2{
-  font-size: 40px;
+  font-size: 30px;
   padding-top: 170px;
 }
 
 .teams{
-  display: grid; 
-  grid-template-columns: repeat(3, 1fr); 
+  display: flex; 
   gap: 15px;
 }
 
-.teams img{
-  width: 350px;
+.team_main{
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
 }
+
+.team_main img{
+  width: 450px;
+}
+
+.team_main p{
+  font-size: 18px;
+}
+
+#teams img{
+  margin-top: 50px;
+  width: 300px;
+}
+
 .teams h3{
   text-transform: uppercase;
   font-size: 15px;
@@ -339,12 +413,14 @@ button:hover {
   font-weight: 200;
 }
 
+
 .backstage{
   display: flex;
   flex-wrap: wrap;        
   justify-content: center;
   gap: 21px;
   margin-bottom: 169px;
+  margin-top: 100px;
 }
 
 .backstage div{
@@ -354,16 +430,48 @@ button:hover {
   background-color: var(--color-primary);
 }
 
+.Reels {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.Reels::-webkit-scrollbar {
+  display: none;
+}
+
+.Reels {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.Reels_item {
+  flex: 0 0 auto;        
+  width: 370px;        
+  height: 560px;
+  border-radius: 45px;
+  overflow: hidden;
+  box-shadow: 4px 4px 8px rgba(0,0,0,0.25);
+  background: var(--color-bg-light); 
+  margin-bottom: 20px;    
+}
+
+.Reels_item iframe {
+  width: 100%;
+  border: none;
+}
+
 .target {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--color-primary);
-  color: var(--color-bg-light);
+  color: var(--color-text);
 }
 
 .target h2 {
-  font-size: 35px;
+  font-size: 30px;
   padding-top: 170px;
   text-transform: uppercase;
   text-align: center;
@@ -375,44 +483,12 @@ button:hover {
   padding-bottom: 50px;
 }
 
-.trust_clients {
-  display: flex;
-  flex-direction: column;
-  align-items: center;   
-  gap: 60px;              
-  margin-bottom: 60px;
-  padding-bottom: 100px;
-  max-width: 100vw;    
-  overflow-x: hidden; 
-}
-
-.trust_row {
-  display: flex;
-  justify-content: center;  
-  gap: 66px;         
-}
-
-.trust_client {
-  display: flex;
-  align-items: center;   
-  gap: 12px;            
-  text-align: left;
-  font-size: 20px;
-  width: 423.32px;
-}
-
-.trust_client img {
-  width: 150px;
-  display: block;
-  margin: 0 auto 12px;
-}
-
 .trust_graphs {
   display: flex;        
   justify-content: center;
   gap: 10px;            
   margin-bottom: 60px;  
-  padding-bottom: 279px;
+  padding-bottom: 100px;
 }
 
 .trust_graphs img{
@@ -421,7 +497,7 @@ button:hover {
 
 .price{
   display: flex;
-  color: var(--color-text);
+  color: var(--color-bg-light);
   gap: 25px;
 }
 
@@ -432,10 +508,10 @@ button:hover {
 }
 
 .info_cost{
-  background-color: var(--color-bg-light);
+  background-color: var(--color-accent);
   width: 468.87px;
   height: 366.53px;
-  border-radius: 12px;
+  border-radius: 30px;
   padding: 20px 0 0 20px;
   overflow-wrap: break-word;
 }
@@ -468,9 +544,9 @@ button:hover {
   display: flex;
   width: 250px;
   height: 63px;
-  background-color: var(--color-accent);
+  background-color: var(--color-primary);
   margin-top: 100px;
-  margin-bottom: 170px;
+  margin-bottom: 100px;
   border-radius: 45px;
   font-size: 15px;
   align-items: center;
@@ -487,7 +563,7 @@ button:hover {
 .insta{
   display: flex;
   flex-direction: column;
-  margin-top: 170px;
+  margin-top: 100px;
   justify-content: center;
   align-items: center;
 
@@ -507,26 +583,14 @@ button:hover {
   transform: rotate(180deg);
 }
 
-
-.trust_clients {
-  display: flex;
-  flex-direction: column;
-  align-items: center;   
-  gap: 40px;              
-  margin-bottom: 60px;
-  padding-bottom: 100px;
-  max-width: 100vw;    
-  overflow-x: hidden; 
-}
-
 .insta h1{
-  font-size: 35px;
+  font-size: 30px;
   text-transform: uppercase;
 }
 
 .insta h3{
-  font-size: 30px;
-  margin-bottom: 70px;
+  font-size: 25px;
+  margin-bottom: 50px;
 }
 
 .insta_row {
@@ -538,36 +602,36 @@ button:hover {
 .insta_client {
   display: flex;
   align-items: center;   
-  gap: 20px;            
+  gap: 40px;            
   text-align: left;
   font-size: 15px;
-  width: 300px;
+  width: 250px;
 }
 
 .insta_client img {
   display: block;
   margin: 0 auto 12px;
-  width: 100px;
+  width: 80px;
 }
 
 .insta_clients{
   margin-bottom: 170px;
 }
 
-.cases{
+.cases_section{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.cases h1{
+.cases_section h1{
   font-size: 35px;
   margin-bottom: 70px;
 }
 
-.cases h3{
-  font-size: 20px;
+.cases_section h3{
+  font-size: 25px;
   text-transform: uppercase;
 }
 
@@ -579,11 +643,11 @@ button:hover {
   display: flex;
   gap: 50px;
   font-size: 15px;
-  margin-top: 150px;
+  margin-top: 100px;
 }
 
 .case_info{
-  margin-bottom: 125px;
+  margin-bottom: 50px;
   width: 500px;
  
 }
@@ -604,12 +668,12 @@ button:hover {
   display: flex;
   align-items: center;
   gap: 20px;
-  margin-bottom: 170px;
+  margin-bottom: 100px;
 }
 
 .examples h2{
   text-transform: uppercase;
-  font-size: 30px;
+  font-size: 20px;
   margin-top: 50px;
 }
 
@@ -619,9 +683,22 @@ button:hover {
   justify-content: center;
   align-items: center;
   margin-top: 50px;
-  margin-bottom: 170px;
+  margin-bottom: 100px;
+  text-align: center;
 }
 
+.feedback p{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.link_tg_b{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .link_tg_b button{
   display: flex;
   flex-direction: row;
@@ -635,7 +712,7 @@ button:hover {
   background-color: var(--color-primary);
   font-size: 20px;
   color: var(--color-bg-light);
-  margin: 90px 0 170px 0;
+  margin: 50px 0 100px 0;
   padding: 0 30px;
 }
 
@@ -647,7 +724,7 @@ button:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 220px;
+  margin-bottom: 50px;
 }
 
 .cases__footer .arrow_button {
@@ -742,10 +819,11 @@ button:hover {
 .contact_info{
   display: flex;
   align-items: center;
-  justify-content: center;
   text-align: left;
   font-size: 15px;
   width: 80%;
+  gap: 20%;
+  margin-top: 20px;
 }
 
 .contact_info img{
@@ -773,7 +851,7 @@ button:hover {
 }
 
 footer{
-  background-color: var(--color-primary);
+  background-color: var(--color-backgraund);
   margin-top: 170px;
 }
 
@@ -818,4 +896,28 @@ footer{
 
 .footer_nav li a:hover {
     color: var(--color-accent);
+}
+
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-primary);    
+  color: var(--color-bg-light);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+#backToTop.show {
+  opacity: 1;
+  pointer-events: auto;
 }
