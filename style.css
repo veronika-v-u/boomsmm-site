@@ -277,6 +277,7 @@ button:hover {
   overflow-x: auto;               
   scroll-behavior: smooth;         
   -webkit-overflow-scrolling: touch; 
+  padding-left: 5%;
 }
 
 .Reviews::-webkit-scrollbar {
@@ -444,6 +445,7 @@ button:hover {
   overflow-x: auto;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+  padding-left: 5%;
 }
 
 .Reels::-webkit-scrollbar {
@@ -457,13 +459,15 @@ button:hover {
 
 .Reels_item {
   flex: 0 0 auto;        
-  width: 370px;        
-  height: 560px;
+  aspect-ratio: 9 / 16; /* вертикальный формат как у Reels */
   border-radius: 45px;
   overflow: hidden;
   box-shadow: 4px 4px 8px rgba(0,0,0,0.25);
   background: var(--color-bg-light); 
-  margin-bottom: 20px;    
+  margin-bottom: 20px;   
+  display:flex;
+  align-items:center;
+  justify-content:center; 
 }
 
 .Reels_item iframe {
