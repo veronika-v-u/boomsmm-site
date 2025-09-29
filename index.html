@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BoomSMM</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_mobile.css">
     <link rel="icon" href="resurse/favicon.svg" type="image/x-icon">
 </head>
 <body>
@@ -31,6 +32,21 @@
             <p><a a href="tel:+375447700288">+375 44 770 02 88</a></p>
         </div>
         
+        <div class="hamburger-menu">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+                <span></span>
+            </label>
+            <ul class="menu__box">
+                <li><a class="menu__item" href="#About_us">О нас</a></li>
+                <li><a class="menu__item" href="#Target">Настройка таргет</a></li>
+                <li><a class="menu__item" href="#Instagram">Ведение инстаграма</a></li>
+                <li><a class="menu__item" href="#Contacts">Контакты</a></li>
+                <li><a href="https://t.me/brat_anton" target="_blank"><img src="resurse/tg_w.svg" alt="telegram"></a></li>
+                <li><a href="https://www.instagram.com/boomsmm.by?igsh=MWIwa2Fkd2lrdmdpaw==" target="_blank"><img src="resurse/insta.svg" alt="Instagram"></a></li>
+                <li><p><a a href="tel:+375447700288" id="phone">+375 44 770 02 88</a></p></li>
+            </ul>
+        </div>
     </header>
 
     <main class="wrapper">
@@ -44,6 +60,11 @@
                         <div class="hero_content"> 
                             <p>Маркетинг в Instagram <br> для роста продаж</p>
                         </div>
+
+                        <div id="tags">
+                            <img src="resurse/tags1.svg" alt="tags">
+                        </div>
+
                         <div class="hero_content">
                             <button class="telegram_button">
                                 <p>Спросить в Telegram</p> <img src="resurse/tg_w.svg" alt="telegram">
@@ -499,12 +520,23 @@
                         
                 </div>
 
-                <div class="trust_graphs">
-                    <img src="resurse/grafic1.svg" alt="График 1">
-                    <img src="resurse/grafic2.svg" alt="График 2">
-                    <img src="resurse/grafic3.svg" alt="График 3">
-                    <img src="resurse/grafic4.svg" alt="График 4">
+                <div class="trust_graphs_wrap">
+                    <div class="trust_graphs" id="trustGraphs" role="list">
+                        <div class="trust_slide" role="listitem"><img src="resurse/grafic1.svg" alt="График 1"></div>
+                        <div class="trust_slide" role="listitem"><img src="resurse/grafic2.svg" alt="График 2"></div>
+                        <div class="trust_slide" role="listitem"><img src="resurse/grafic3.svg" alt="График 3"></div>
+                        <div class="trust_slide" role="listitem"><img src="resurse/grafic4.svg" alt="График 4"></div>
+                    </div>
+
+                    <!-- Индикаторы (точки) — показываем только на мобильных -->
+                    <div class="trust_dots" id="trustDots" aria-hidden="false">
+                        <button class="trust_dot" data-index="0" aria-label="Слайд 1"></button>
+                        <button class="trust_dot" data-index="1" aria-label="Слайд 2"></button>
+                        <button class="trust_dot" data-index="2" aria-label="Слайд 3"></button>
+                        <button class="trust_dot" data-index="3" aria-label="Слайд 4"></button>
+                    </div>
                 </div>
+
 
                 <div class="price">
                     <div class="info_cost">
@@ -651,8 +683,8 @@
                                 <div>
                                     <img src="resurse/istore_before.svg" alt="i-store">
                                 </div>
-                                <div>
-                                    <img src="resurse/istore_s_bef.svg" alt="i-store">
+                                <div class="ex_img">
+                                    <img src="resurse/istore_s_bef.svg" alt="i-store" data-mobile-src="resurse/vert_istore_before.svg">
                                 </div>
                             </div>
 
@@ -664,8 +696,8 @@
                                 <div>
                                     <img src="resurse/isore_after.svg" alt="i-store">
                                 </div>
-                                <div>
-                                    <img src="resurse/istore_stories_aft.svg" alt="i-store">
+                                <div class="ex_img">
+                                    <img src="resurse/istore_stories_aft.svg" alt="i-store" data-mobile-src="resurse/vert_istore_after.svg">
                                 </div>
                             </div>
                         </div>
@@ -706,8 +738,8 @@
                                 <div>
                                     <img src="resurse/ceranik_by_before.svg" alt="CERAMIK.BY">
                                 </div>
-                                <div>
-                                    <img src="resurse/ceranik_by_stories.svg" alt="CERAMIK.BY">
+                                <div class="ex_img">
+                                    <img src="resurse/ceranik_by_stories.svg" alt="CERAMIK.BY" data-mobile-src="resurse/vert_ceramika_before.svg">
                                 </div>
                             </div>
 
@@ -717,10 +749,10 @@
 
                             <div class="example">
                                 <div>
-                                    <img src="resurse/ceranik_by_after.svg" alt="i-store">
+                                    <img src="resurse/ceranik_by_after.svg" alt="CERAMIK.BY">
                                 </div>
-                                <div>
-                                    <img src="resurse/ceranik_by_after_stories.svg" alt="i-store">
+                                <div class="ex_img">
+                                    <img src="resurse/ceranik_by_after_stories.svg" alt="CERAMIK.BY" data-mobile-src="resurse/vert_ceramika_after.svg">
                                 </div>
                             </div>
 
@@ -765,8 +797,8 @@
                                 <div>
                                     <img src="resurse/yha_before.svg" alt="Уха из Петуха">
                                 </div>
-                                <div>
-                                    <img src="resurse/yha_before_stories.svg" alt="Уха из Петуха">
+                                <div class="ex_img">
+                                    <img src="resurse/yha_before_stories.svg" alt="Уха из Петуха" data-mobile-src="resurse/vert_uha_before.svg">
                                 </div>
                             </div>
 
@@ -778,8 +810,8 @@
                                 <div>
                                     <img src="resurse/yha_after.svg" alt="Уха из Петуха">
                                 </div>
-                                <div>
-                                    <img src="resurse/yha_stories_aftersvg.svg" alt="Уха из Петуха">
+                                <div class="ex_img">
+                                    <img src="resurse/yha_stories_aftersvg.svg" alt="Уха из Петуха" data-mobile-src="resurse/vert_uha_after.svg">
                                 </div>
                             </div>                     
                             
@@ -817,8 +849,8 @@
                                 <div>
                                     <img src="resurse/flexico_before.svg" alt="flexico.studio">
                                 </div>
-                                <div>
-                                    <img src="resurse/flexico_stories_before.svg" alt="flexico.studioа">
+                                <div class="ex_img">
+                                    <img src="resurse/flexico_stories_before.svg" alt="flexico.studioа" data-mobile-src="resurse/vert_flecixo_before.svg">
                                 </div>
                             </div>
 
@@ -830,8 +862,8 @@
                                 <div>
                                     <img src="resurse/flexico_after.svg" alt="flexico.studio">
                                 </div>
-                                <div>
-                                    <img src="resurse/flexico_stories_after.svg" alt="flexico.studio">
+                                <div class="ex_img">
+                                    <img src="resurse/flexico_stories_after.svg" alt="flexico.studio" data-mobile-src="resurse/vert_flecixo_after.svg">
                                 </div>
                             </div>                     
                             
@@ -875,8 +907,8 @@
                                 <div>
                                     <img src="resurse/rostik_mebel_before.svg" alt="rostik mebel">
                                 </div>
-                                <div>
-                                    <img src="resurse/rostik_mebel_before_stories.svg" alt="rostik mebel">
+                                <div class="ex_img">
+                                    <img src="resurse/rostik_mebel_before_stories.svg" alt="rostik mebel" data-mobile-src="resurse/vert_rostik_before.svg">
                                 </div>
                             </div>
 
@@ -888,8 +920,8 @@
                                 <div>
                                     <img src="resurse/rostik_mebel_after.svg" alt="rostik mebel">
                                 </div>
-                                <div>
-                                    <img src="resurse/rostik_mebel_after_stories.svg" alt="rostik mebel">
+                                <div class="ex_img">
+                                    <img src="resurse/rostik_mebel_after_stories.svg" alt="rostik mebel" data-mobile-src="resurse/vert_rostik_after.svg">
                                 </div>
                             </div>                     
                             
@@ -927,8 +959,8 @@
                                 <div>
                                     <img src="resurse/vsebalanc_before.svg" alt="Весбаланс">
                                 </div>
-                                <div>
-                                    <img src="resurse/vsebalanc_stories_before.svg" alt="Весбаланс">
+                                <div class="ex_img">
+                                    <img src="resurse/vsebalanc_stories_before.svg" alt="Весбаланс" data-mobile-src="resurse/vert_vsebalance_before.svg">
                                 </div>
                             </div>
 
@@ -940,8 +972,8 @@
                                 <div>
                                     <img src="resurse/vsebalanc_after.svg" alt="Весбаланс">
                                 </div>
-                                <div>
-                                    <img src="resurse/vsebalanc_stories_after.svg" alt="Весбаланс">
+                                <div class="ex_img">
+                                    <img src="resurse/vsebalanc_stories_after.svg" alt="Весбаланс" data-mobile-src="resurse/vert_vsebalance_after.svg">
                                 </div>
                             </div>                     
                             <div class="link_tg_b">
@@ -984,8 +1016,8 @@
                                 <div>
                                     <img src="resurse/kakumam_before.svg" alt="Как у мамы">
                                 </div>
-                                <div>
-                                    <img src="resurse/kakumam_stories_before.svg" alt="Как у мамы">
+                                <div class="ex_img">
+                                    <img src="resurse/kakumam_stories_before.svg" alt="Как у мамы" data-mobile-src="resurse/vert_kakumam_before.svg">
                                 </div>
                             </div>
 
@@ -997,8 +1029,8 @@
                                 <div>
                                     <img src="resurse/kakumam_after.svg" alt="Как у мамы">
                                 </div>
-                                <div>
-                                    <img src="resurse/kakumam_stories_after.svg" alt="Как у мамы">
+                                <div class="ex_img">
+                                    <img src="resurse/kakumam_stories_after.svg" alt="Как у мамы" data-mobile-src="resurse/vert_kakumam_after.svg">
                                 </div>
                             </div>                     
                             
@@ -1045,8 +1077,8 @@
                                 <div>
                                     <img src="resurse/gl_mebel_before.svg" alt="GL мебель">
                                 </div>
-                                <div>
-                                    <img src="resurse/gl_mebel_stories_before.svg" alt="GL мебель">
+                                <div class="ex_img">
+                                    <img src="resurse/gl_mebel_stories_before.svg" alt="GL мебель" data-mobile-src="resurse/vert_gl_before.svg">
                                 </div>
                             </div>
 
@@ -1058,8 +1090,8 @@
                                 <div>
                                     <img src="resurse/gl_mebel_after.svg" alt="GL мебель">
                                 </div>
-                                <div>
-                                    <img src="resurse/gl_mebel_stories_after.svg" alt="GL мебель">
+                                <div class="ex_img">
+                                    <img src="resurse/gl_mebel_stories_after.svg" alt="GL мебель" data-mobile-src="resurse/vert_gl_after.svg">
                                 </div>
                             </div>                     
                             

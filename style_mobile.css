@@ -1,0 +1,462 @@
+@media (max-width: 768px) {
+
+    .hamburger-menu{
+        display: block;
+    }
+
+    .headerNav{
+        display: none;
+    }
+
+    .media{
+        display: none;
+    }
+
+    .phone{
+        display: none;
+    }
+
+    .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero{
+        max-width: 100%;
+        height: 743px;
+    }
+
+    .out_container{
+        width: 90%;
+        height: 572px;
+    }
+
+    
+    .h1_content h1{
+        font-size: 25px;
+        padding-left: 20px;
+        margin: 0;
+        text-align: center;
+    }
+
+    .hero_content p{
+        font-size: 15px;
+        width: 180px;
+        text-align: center;
+    }
+
+    .hero_content button{
+        width: 250px;
+        height: 60px;
+        padding: 0 30px;
+        margin: 0 auto;
+    }
+
+    .hero_content button p{
+        font-size: 15px;
+    }
+
+    .tags{
+        display: none;
+    }
+
+    #tags{
+        display: block;
+        width: 85%;
+    }
+
+    #tags img{
+        width: 300px;
+        margin-bottom: 10px;
+    }
+
+    .h1_section2{
+        width: 286px;
+        font-size: 15px;
+        padding-top: 40px;
+        margin: 150px 0 150px 0;
+    }
+
+    .pluses {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;   
+        justify-content: center;
+        align-items: center;
+        padding-left: 0;  
+        margin-left: 0;   
+    }
+
+    .benefits_list{
+        width: 320px;
+        height: 300px;
+    }
+
+    .benefits_list h3{
+        font-size: 15px;
+        padding-top: 10px;
+        padding-left: 15px;
+    }
+
+    .benefits_list p{
+        font-size: 15px;
+        width: 300px;
+        padding-left: 15px;
+    }
+
+    .competencies{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .competencies h2{
+        font-size: 20px;
+        padding-top: 100px;
+        text-align: center;
+    }
+    
+    .competencies ul{
+        font-size: 15px;
+        width: 300px;
+    }
+
+    .competencies ul li {
+        margin-bottom: 36px; 
+    }
+
+    .competencies ul li img {
+        width: 20px;     
+    }
+
+    #BoomSmm_big{
+        display: none;
+    }
+    
+    .Review h2{
+        font-size: 20px;
+        padding-top: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Reviews_list{
+        padding-left: 20px;
+        font-size: 15px;
+        width: 320px;
+        height: 560px;
+    }
+
+    .Reviews_img img{
+        width: 320px;
+        border-radius: 45px;
+        padding-left: 10px;
+    }
+
+    .Reviews_list p{
+        width: 300px;
+    }
+
+    .team h2{
+        font-size: 20px;
+        padding-top: 100px;
+    }
+
+    .teams{
+        display: flex; 
+        gap: 15px;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .team_main{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .teams.main-row {
+        width: 90%;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .team_main img{
+        width: 300px;
+    }
+
+    .teams.main-row p{
+        width: 260px;
+        font-size: 15px;
+    }
+
+    
+    .target h2 {
+        font-size: 20px;
+        padding-top: 100px;
+    }
+
+    .target h3 {
+        font-size: 15px;
+    }
+
+    .trust_graphs {
+        display: flex;        
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;            
+        margin-bottom: 60px;  
+        padding-bottom: 100px;
+        width: 300px;
+    }
+
+    
+    .price{
+        gap: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .info_cost{
+        background-color: var(--color-accent);
+        width: 300px;
+        height: 440px;
+        border-radius: 30px;
+        padding: 20px 0 0 30px;
+        overflow-wrap: break-word;
+    }
+
+    .info_cost h2:first-of-type {
+        font-size: 20px;
+        margin: 0;
+        padding-top: 0;
+    }
+
+    .info_cost p {
+        font-size: 15px;
+        margin: 8px 0 16px;
+    }
+
+    .info_cost h2:nth-of-type(2) {
+        font-size: 18px;
+    }
+
+    .info_cost ul {
+        font-size: 13px;
+        margin: 0;
+        padding-left: 10px;        
+        line-height: 1.4;          
+    }
+
+    .price_button button{
+        width: 250px;
+        height: 53px;
+        margin-top: 100px;
+        margin-bottom: 50px;
+        font-size: 15px;
+        padding: 0 25px;
+    }
+
+    .price_button img{
+        padding-left: 10px;
+    }
+    
+    .insta{
+        margin-top: 50px;
+    }
+
+    .insta h1{
+        font-size: 20px;
+    }
+
+    .insta h3{
+        font-size: 15px;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+            
+    .insta_row {
+         display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;  
+        gap: 10px;         
+    }
+
+    .insta_client {
+        display: flex;
+        align-items: center;   
+        gap: 10px;            
+        text-align: left;
+        font-size: 10px;
+        width: 140px;
+    }
+
+    .insta_client img {
+        width: 50px;
+    }
+
+    .insta_clients{
+        margin-bottom: 100px;
+    }
+
+    .cases_section h1{
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+
+    .cases_section h3{
+        font-size: 20px;
+    }
+
+    .case{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        font-size: 15px;
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+    .case_info{
+        margin-bottom: 30px;
+        width: 340px;
+    }
+
+    .case img{
+        width: 320px;
+        margin-bottom: 30px;
+    }
+
+    .examples{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .example{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 100px;
+    }
+
+    .examples h2{
+        font-size: 20px;
+        margin-top: 30px;
+    }
+
+    .ex_img img{
+        width: 300px;
+    }
+
+    .feedback{
+        margin-top: 30px;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    .feedback p{
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .feedback img{
+        width: 300px;
+    }
+    
+    .link_tg_b button{
+        gap: 10px;
+        width: 190px;
+        height: 50px;;
+        font-size: 15px;
+        margin: 20px 0 50px 0;
+    }
+
+    .link_tg_b img{
+        width: 30px;
+    }
+
+    
+    .cases__footer {
+        margin-bottom: 20px;
+    }
+
+    .cases__footer .arrow_button {
+        font-size: 15px;
+    }
+
+    .cases__footer .arrow_button img{
+        width: 50px;
+    }
+
+    
+    .price_inst_key h3{
+        font-size: 20px;
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .price_inst{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .price_inst_info{
+        width: 320px;
+        height: 370px;
+        padding-left: 15px;
+        font-size: 14px;
+    }
+
+    .price_inst_info h4{
+        font-size: 20px;
+        padding: 15px 0 0 0;
+        margin: 0;
+    }
+
+    .contacts h2{
+        font-size: 25px;
+    }
+
+    .contact_info{
+        display: flex;
+        align-items: center;
+        text-align: left;
+        flex-direction: column;
+        font-size: 15px;
+        width: 80%;
+        gap: 20%;
+        margin-top: 20px;
+    }
+
+    .contact_info img{
+        margin-top: 50px;
+        width: 360px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer_nav nav{
+        display: none;
+    }
+
+    #backToTop {
+        display: none;
+    }
+}
+
