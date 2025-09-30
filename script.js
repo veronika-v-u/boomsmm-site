@@ -228,120 +228,101 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const MOBILE_MAX = 768;
-  if (window.innerWidth > MOBILE_MAX) return; // только на мобилке
+  const toggle = document.getElementById('menu__toggle');
+  const menuBox = document.querySelector('.menu__box');
+  const menuLabel = document.querySelector('.menu__btn[for="menu__toggle"]');
 
-  const container = document.getElementById('trustGraphs');
-  const slides = container ? Array.from(container.querySelectorAll('.trust_slide')) : [];
-  const dots = Array.from(document.querySelectorAll('.trust_dot'));
-  if (!container || slides.length === 0) return;
+  if (!toggle || !menuBox) return;
 
-  // вспомогательное состояние
-  let slidePositions = []; // абсолютные left позиции слайдов относительно контейнера
-  let raf = null;
-
-  // вычислить массив позициий с учётом реального layout
-  function updateSlidePositions() {
-    slidePositions = slides.map(s => s.offsetLeft);
+  // если у вас фиксированный header — укажи селектор или оставь '' 
+  const HEADER_SELECTOR = ''; 
+  const headerEl = HEADER_SELECTOR ? document.querySelector(HEADER_SELECTOR) : null;
+  function headerOffset() {
+    if (!headerEl) return 0;
+    const st = getComputedStyle(headerEl);
+    if (/fixed|sticky/i.test(st.position)) return Math.ceil(headerEl.getBoundingClientRect().height);
+    return 0;
   }
 
-  // прокрутка к слайду по индексу, использует реальные позиции
-  function scrollToIndex(idx, smooth = true) {
-    idx = Math.max(0, Math.min(idx, slides.length - 1));
-    const left = slidePositions[idx] ?? (idx * container.clientWidth);
-    container.scrollTo({ left, behavior: smooth ? 'smooth' : 'auto' });
-    setActiveDot(idx);
+  function closeMenuNoJump() {
+    // снимем чек и уберём фокус с активного элемента внутри меню
+    toggle.checked = false;
+    const a = document.activeElement;
+    if (a && menuBox.contains(a)) a.blur();
+    if (menuLabel) menuLabel.blur();
   }
 
-  // определить ближайший слайд по текущему scrollLeft
-  function getCurrentIndexByScroll() {
-    const left = container.scrollLeft;
-    let bestIdx = 0;
-    let bestDist = Infinity;
-    for (let i = 0; i < slidePositions.length; i++) {
-      const dist = Math.abs(slidePositions[i] - left);
-      if (dist < bestDist) { bestDist = dist; bestIdx = i; }
+  function smoothTo(target) {
+    if (!target) return;
+    const offset = headerOffset();
+    const top = window.scrollY + target.getBoundingClientRect().top - offset;
+    window.scrollTo({ top: Math.max(0, Math.round(top)), behavior: 'smooth' });
+  }
+
+  // Глобальный делегат: клики по ссылкам в меню
+  menuBox.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if (!a) return;
+    const href = a.getAttribute('href') || '';
+
+    // Если это внешняя ссылка (включая tel/mailto) — позволяем переход, но закрываем меню сразу
+    if (/^(https?:|mailto:|tel:)/i.test(href)) {
+      closeMenuNoJump();
+      return;
     }
-    return bestIdx;
-  }
 
-  // обновляем активную точку
-  function setActiveDot(idx) {
-    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-  }
+    // Пустой/декоративный хеш (#) — предотвращаем дефолт (он может прыгнуть наверх)
+    if (href === '#' || href.trim() === '') {
+      e.preventDefault();
+      closeMenuNoJump();
+      return;
+    }
 
-  // scroll handler с RAF
-  container.addEventListener('scroll', () => {
-    if (raf) cancelAnimationFrame(raf);
-    raf = requestAnimationFrame(() => {
-      const idx = getCurrentIndexByScroll();
-      setActiveDot(idx);
-    });
-  }, { passive: true });
+    // Якорь внутри страницы
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const id = href.slice(1);
+      const target = document.getElementById(id);
+      if (!target) { closeMenuNoJump(); return; }
 
-  // клики по точкам
-  dots.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const idx = Number(btn.dataset.index);
-      scrollToIndex(idx);
-    });
+      // Закрываем меню и даём небольшой таймаут для CSS‑анимации (если есть)
+      closeMenuNoJump();
+      // Delay: даём время закрытию/перерисовке, чтобы не было конфликта с focus/hash
+      const DELAY = 60;
+      setTimeout(() => smoothTo(target), DELAY);
+      return;
+    }
+
+    // Любые другие ссылки — закрываем меню и позволяем перейти
+    closeMenuNoJump();
   });
 
-  // пересчитать позиции после загрузки картинок (они влияют на layout)
-  function init() {
-    // жёсткий сброс паддингов контейнера, если есть
-    container.style.paddingLeft = '0';
-    container.style.paddingRight = '0';
-    // ждём рендер/загрузку изображений, затем считаем позиции
-    requestAnimationFrame(() => {
-      updateSlidePositions();
-      // прокрутка к первому слайда (без анимации)
-      scrollToIndex(0, false);
-      // выставим активную точку
-      setActiveDot(0);
-    });
-  }
-
-  // Пересчёт при загрузке изображений внутри слайдов
-  const imgs = container.querySelectorAll('img');
-  let imgsLoaded = 0;
-  if (imgs.length === 0) {
-    init();
-  } else {
-    imgs.forEach(img => {
-      if (img.complete) {
-        imgsLoaded++;
-        if (imgsLoaded === imgs.length) init();
-      } else {
-        img.addEventListener('load', () => {
-          imgsLoaded++;
-          if (imgsLoaded === imgs.length) init();
-        }, { once: true });
-        img.addEventListener('error', () => {
-          imgsLoaded++;
-          if (imgsLoaded === imgs.length) init();
-        }, { once: true });
+  // Надёжная обработка клика по label (крестику) — предотвращаем нативные артефакты
+  if (menuLabel) {
+    menuLabel.addEventListener('click', function (e) {
+      e.preventDefault();               // отменяем нативный toggle
+      const newState = !toggle.checked; // инвертируем состояние вручную
+      toggle.checked = newState;
+      // Убираем фокус чтобы не дергать скролл
+      menuLabel.blur();
+      if (!newState) {
+        // при закрытии уберём фокус из меню
+        const a = document.activeElement;
+        if (a && menuBox.contains(a)) a.blur();
       }
     });
+    // предотвращаем дефолтный mousedown поведение (фокус)
+    menuLabel.addEventListener('mousedown', e => e.preventDefault());
   }
 
-  // пересчитать позиции при resize / ориентации
-  let resizeTimer = null;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      if (window.innerWidth > MOBILE_MAX) return;
-      updateSlidePositions();
-      // корректируем прокрутку чтобы остаться на том же слайде
-      const cur = getCurrentIndexByScroll();
-      scrollToIndex(cur, false);
-    }, 120);
+  // ESC закрывает меню
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && toggle.checked) closeMenuNoJump();
   });
 
-  // если DOM меняется (лазифайторы, картинки подгружаются динамически) — пересчёт
-  const mo = new MutationObserver(() => {
-    updateSlidePositions();
+  // Если hash изменился извне — закрываем меню чтобы не перекрывать секцию
+  window.addEventListener('hashchange', () => {
+    if (toggle.checked) closeMenuNoJump();
   });
-  mo.observe(container, { childList: true, subtree: true });
 });
 

@@ -1053,6 +1053,8 @@ footer{
   display: none;
 }
 
+.menu__box a[href="#"] { cursor: pointer; }
+ #menu__toggle:checked ~ .menu__box { transform: translateX(0); visibility: visible; }
 .trust_dots{
   display: none;
 }
