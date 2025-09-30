@@ -692,6 +692,10 @@ button:hover {
   margin-top: 50px;
 }
 
+.ex_img img{
+  width: 848px;
+}
+
 .feedback{
   display: flex;
   flex-direction: column;
@@ -708,11 +712,8 @@ button:hover {
   align-items: center;
 }
 
-.istore-case .feedback p{
-  display: flex;
-  align-items: center;      /* по вертикали */
-  justify-content: center;  /* по горизонтали */
-  text-align: center;
+.feedback img{
+  width: 685px;
 }
 
 .link_tg_b{
