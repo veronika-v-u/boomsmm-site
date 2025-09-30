@@ -761,6 +761,9 @@ button:hover {
   border: none;
 }
 
+.cases__footer .arrow_button img{
+  width: 50px;
+}
 
 .price_inst_key{
   display: flex;
