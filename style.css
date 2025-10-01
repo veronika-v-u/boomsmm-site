@@ -951,6 +951,9 @@ footer{
   pointer-events: auto;
 }
 
+#backToTop img{
+  width: 25px;
+}
 /* скрываем чекбокс */
 #menu__toggle {
   opacity: 0;
