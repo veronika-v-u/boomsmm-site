@@ -2,6 +2,20 @@
 
     .hamburger-menu{
         display: block;
+        position: fixed;
+    }
+
+    .menu__box{
+        padding-left: 20px;
+    }
+
+    #tg{
+        margin-bottom: 20px;
+        padding-top: 10px;
+    }
+
+    #phone{
+        padding-left: 10px;
     }
 
     .headerNav{
@@ -30,14 +44,39 @@
     .out_container{
         width: 90%;
         height: 572px;
+        margin: 0 auto;
+        box-sizing: border-box;
     }
 
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;                 
+        flex-wrap: wrap;
+    }
+
+    .hero_image{
+        width: clamp(300px, 50vw, 600px);
+    }
+    .container > div {
+        display: flex;
+        flex-direction: column;  
+        align-items: center;       
+        justify-content: center;   
+        box-sizing: border-box;
+    }
     
+    .container > div img{
+        margin-right: 50px;
+    }
+
     .h1_content h1{
         font-size: 25px;
         padding-left: 0;
         margin: 0;
         text-align: center;
+        width: 290px;
     }
 
     .hero_content p{
@@ -53,23 +92,37 @@
         justify-content: center;
     }
 
-    .hero_content button{
+   .hero_content button{
+        display: inline-flex;      
+        align-items: center;
+        justify-content: center;
+        gap: 10px;               
         width: 250px;
         height: 60px;
-        padding: 0 30px;
-        margin: 0 auto;
-
+        padding: 0 16px;           
+        box-sizing: border-box;
+        white-space: nowrap;       
+        overflow: hidden;         
     }
 
     .hero_content button p{
+        margin: 0;
         font-size: 15px;
         text-align: left;
+        white-space: nowrap;
+        text-overflow: ellipsis;    
+        display: inline-block;  
+        padding-left: 40px;  
+        max-width: calc(100% - 36px); 
     }
 
     .tags{
         display: none;
     }
 
+    .tags img{
+        display: none;
+    }
     #tags{
         display: block;
         width: 85%;
@@ -84,7 +137,7 @@
         width: 286px;
         font-size: 15px;
         padding-top: 40px;
-        margin: 150px 0 150px 0;
+        margin: 50px 0 50px 0;
     }
 
     .pluses {
@@ -94,12 +147,13 @@
         justify-content: center;
         align-items: center;
         padding-left: 0;  
-        margin-left: 0;   
+        margin: 0 auto;   
     }
 
     .benefits_list{
-        width: 320px;
-        height: 300px;
+        width: 300px;
+        height: 270px;
+        padding: 20px 20px 0 10px;
     }
 
     .benefits_list h3{
@@ -110,7 +164,7 @@
 
     .benefits_list p{
         font-size: 15px;
-        width: 300px;
+        width: 280px;
         padding-left: 15px;
     }
 
@@ -185,7 +239,7 @@
     .team_main{
         display: flex;
         gap: 10px;
-        align-items: center;
+        margin: 0 auto;
         flex-direction: column;
     }
 
@@ -204,6 +258,10 @@
         font-size: 15px;
     }
 
+    .main_text{
+        padding-left: 0;
+        margin-left: 0;
+    }
     
     .target h2 {
         font-size: 20px;
@@ -236,9 +294,9 @@
     .info_cost{
         background-color: var(--color-accent);
         width: 300px;
-        height: 440px;
+        height: 430px;
         border-radius: 30px;
-        padding: 20px 0 0 30px;
+        padding: 30px 20px 0 30px;
         overflow-wrap: break-word;
     }
 
@@ -429,18 +487,22 @@
     }
 
     .price_inst_info{
-        width: 320px;
-        height: 370px;
-        padding-left: 15px;
+        width: 300px;
+        height: 330px;
+        padding: 20px 20px 20px 30px;
         font-size: 14px;
     }
 
     .price_inst_info h4{
         font-size: 20px;
-        padding: 15px 0 0 0;
+        padding: 15px 0 10px 0;
         margin: 0;
     }
 
+    .price_inst_info ul{
+        padding-left: 10px;
+        padding-top: -10px;
+    }
     .contacts h2{
         font-size: 25px;
     }
