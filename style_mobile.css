@@ -209,19 +209,19 @@
 
     .Reviews_list{
         padding-left: 20px;
-        font-size: 15px;
-        width: 320px;
-        height: 560px;
+        font-size: 12px;
+        width: 300px;
+        height: 400px;
     }
 
     .Reviews_img img{
-        width: 320px;
+        width: 300px;
         border-radius: 45px;
         padding-left: 10px;
     }
 
     .Reviews_list p{
-        width: 300px;
+        width: 280px;
     }
 
     
@@ -537,7 +537,10 @@
     }
 
     #backToTop {
-        display: none;
+        bottom: 30px;
+        right: 30px;
+        width: 40px;
+        height: 40px;
     }
 }
 
