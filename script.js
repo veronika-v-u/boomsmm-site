@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let startY = 0;
   let scrollLeft = 0;
   const THRESHOLD = 10;      // минимальная дистанция для определения направления
-  const SPEED = 1.0;        // множитель скорости прокрутки по горизонтали (подбери при необходимости)
+  const SPEED = 1.4;        // множитель скорости прокрутки по горизонтали (подбери при необходимости)
 
   function onDown(e) {
     pointerDown = true;
