@@ -283,11 +283,79 @@
         justify-content: center;
         flex-direction: column;
         gap: 10px;            
-        margin-bottom: 60px;  
-        padding-bottom: 100px;
+        margin-bottom: 20px;  
+        padding-bottom: 10px;
         width: 300px;
     }
-  
+
+    #trustGraphs {
+        display: block;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    /* каждый слайд — скрыт по умолчанию, активный показывает */
+    .trust_slide {
+        display: none;
+        text-align: center;
+    }
+    .trust_slide--active {
+        display: block;
+    }
+
+    /* изображение внутри слайда */
+    .trust_slide img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 12px;
+    }
+
+    /* контролы (точки) уже есть — стилизуем */
+    .trust_dots {
+        display:flex;
+        gap:10px;
+        justify-content:center;
+        margin-top:12px;
+    }
+    .trust_dot {
+        width: 13px;
+        height: 13px;
+        border-radius:50%;
+        background: var(--color-backgraund);
+        border:none;
+        padding:0;
+        margin-bottom: 50px;
+    }
+    .trust_dot[aria-current="true"], .trust_dot.active {
+        background: var(--color-primary);
+    }
+
+    /* стрелки prev/next — позиционируем рядом с контейнером */
+    .trust_control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 36px;
+        height: 36px;
+        background: transparent;
+        border: none;
+        background-size: contain;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        opacity: 0.95;
+    }
+    .trust_prev {
+        left: -46px;
+        background-image: url('resurse/arrow.png'); /* добавьте свои иконки */
+    }
+    .trust_next {
+        right: -46px;
+        background-image: url('resurse/arrow.png');
+    }
+    
     .price{
         gap: 15px;
         display: flex;
@@ -542,5 +610,6 @@
         width: 40px;
         height: 40px;
     }
+    
 }
 

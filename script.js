@@ -389,3 +389,98 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const MOBILE_MAX = 768;
+  if (window.innerWidth > MOBILE_MAX) return; // инициализируем только на мобилке
+
+  const container = document.getElementById('trustGraphs');
+  const dotsWrap = document.getElementById('trustDots');
+  if (!container) return;
+  const slides = Array.from(container.querySelectorAll('.trust_slide'));
+  const dots = dotsWrap ? Array.from(dotsWrap.querySelectorAll('.trust_dot')) : [];
+
+  // если слайдов мало — не инициализируем
+  if (slides.length <= 1) {
+    // гарантируем что все видны
+    slides.forEach(s => s.classList.add('trust_slide--active'));
+    return;
+  }
+
+  // создаём prev/next кнопки (вставляем рядом с контейнером)
+  const prev = document.createElement('button');
+  prev.className = 'trust_control trust_prev';
+  prev.setAttribute('aria-label', 'Предыдущий слайд');
+  prev.type = 'button';
+
+  const next = document.createElement('button');
+  next.className = 'trust_control trust_next';
+  next.setAttribute('aria-label', 'Следующий слайд');
+  next.type = 'button';
+
+  // вставляем кнопки в DOM (вставка в родителя wrapper, чтобы позиционирование CSS сработало)
+  const wrap = container.parentElement;
+  if (wrap) {
+    wrap.style.position = wrap.style.position || 'relative';
+    wrap.appendChild(prev);
+    wrap.appendChild(next);
+  }
+
+  let current = 0;
+  const total = slides.length;
+
+  function update() {
+    slides.forEach((s, i) => s.classList.toggle('trust_slide--active', i === current));
+    if (dots.length) {
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+        if (i === current) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
+      });
+    }
+    // доступность стрелок
+    prev.disabled = current === 0;
+    next.disabled = current === total - 1;
+  }
+
+  // клики по точкам
+  if (dots.length) {
+    dots.forEach((d, i) => {
+      d.addEventListener('click', () => {
+        current = i;
+        update();
+      });
+    });
+  }
+
+  prev.addEventListener('click', () => {
+    if (current > 0) current--;
+    update();
+  });
+  next.addEventListener('click', () => {
+    if (current < total - 1) current++;
+    update();
+  });
+
+  // keyboard navigation
+  container.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { if (current > 0) { current--; update(); } }
+    if (e.key === 'ArrowRight') { if (current < total - 1) { current++; update(); } }
+  });
+
+  // Инициализация: показываем первый слайд и синхронизируем точки
+  update();
+
+  // Обновление при ресайзе: если пользователь повернул устройство или расширил экран, удаляем инициализацию
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (window.innerWidth > MOBILE_MAX) {
+        // удалить вставленные элементы и вернуть исходное поведение
+        prev.remove(); next.remove();
+        slides.forEach(s => s.classList.remove('trust_slide--active'));
+        dots.forEach(d => d.classList.remove('active'), d.removeAttribute('aria-current'));
+      }
+    }, 160);
+  });
+});
