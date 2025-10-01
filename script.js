@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   })();
 
-  function initSlider(selector) {
+  /*function initSlider(selector) {
     const slider = document.querySelector(selector);
     if (!slider) return;
     let isDown = false, startX, scrollLeft;
@@ -121,7 +121,70 @@ document.addEventListener("DOMContentLoaded", () => {
     slider.addEventListener('touchstart', onDown);
     slider.addEventListener('touchend', onUp);
     slider.addEventListener('touchmove', onMove);
+  }*/
+
+    function initSlider(selector) {
+  const slider = document.querySelector(selector);
+  if (!slider) return;
+
+  // рекомендуем: нативный горизонтальный scroll при overflow-x:auto
+  slider.style.overflowX = slider.style.overflowX || 'auto';
+  slider.style.webkitOverflowScrolling = slider.style.webkitOverflowScrolling || 'touch';
+
+  let pointerDown = false;
+  let startX = 0;
+  let startY = 0;
+  let scrollLeft = 0;
+  const THRESHOLD = 8;      // минимальная дистанция для определения направления
+  const SPEED = 1.4;        // множитель скорости прокрутки по горизонтали (подбери при необходимости)
+
+  function onDown(e) {
+    pointerDown = true;
+    const p = e.touches ? e.touches[0] : e;
+    startX = p.pageX;
+    startY = p.pageY;
+    scrollLeft = slider.scrollLeft;
+    slider.classList.add('dragging');
   }
+
+  function onUp() {
+    pointerDown = false;
+    slider.classList.remove('dragging');
+  }
+
+  function onMove(e) {
+    if (!pointerDown) return;
+    const p = e.touches ? e.touches[0] : e;
+    const dx = p.pageX - startX;
+    const dy = p.pageY - startY;
+
+    // если пользователь двигается преимущественно вертикально — не мешаем (позволяем странице скроллить)
+    if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > THRESHOLD) {
+      // отпускаем локальную «захваченность» и не preventDefault — страница будет скроллиться
+      return;
+    }
+
+    // если движение горизонтальное — блокируем вертикальный скролл и делаем horizontal scroll
+    e.preventDefault();
+    slider.scrollLeft = scrollLeft - dx * SPEED;
+  }
+
+  // mouse handlers (не менять — для десктопа)
+  function onMouseDown(e) { onDown(e); }
+  function onMouseUp() { onUp(); }
+  function onMouseMove(e) { onMove(e); }
+
+  // touch handlers
+  slider.addEventListener('touchstart', onDown, { passive: true });
+  slider.addEventListener('touchend', onUp, { passive: true });
+  slider.addEventListener('touchcancel', onUp, { passive: true });
+  slider.addEventListener('touchmove', onMove, { passive: false });
+
+  // мышь
+  slider.addEventListener('mousedown', onMouseDown);
+  document.addEventListener('mouseup', onMouseUp);
+  document.addEventListener('mousemove', onMouseMove);
+}
 
   // инициализируем оба слайдера
   initSlider('.Reviews');
