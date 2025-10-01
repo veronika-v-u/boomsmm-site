@@ -263,6 +263,11 @@
         margin-left: 0;
     }
     
+    .Reels {
+        display: flex;
+        flex-direction: row;
+    }
+
     .target h2 {
         font-size: 20px;
         padding-top: 100px;
@@ -281,14 +286,14 @@
         padding-bottom: 100px;
         width: 300px;
     }
-
-    
+  
     .price{
         gap: 15px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin: 0 auto;
     }
 
     .info_cost{
