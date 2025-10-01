@@ -269,11 +269,31 @@
         padding-left: 0;
         margin-left: 0;
     }
+
+    .backstage{
+        margin-bottom: 100px;
+        margin-top: 100px;
+    }
     
     .Reels {
         display: flex;
         flex-direction: row;
     }
+
+    .Reviews, .Reels {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch; /* iOS инерция */
+  scroll-behavior: smooth;           /* плавный программный скролл */
+  touch-action: pan-y;               /* разрешаем вертикальный пан браузеру по умолчанию */
+  -ms-overflow-style: auto;
+  scrollbar-width: thin;
+}
+.Reviews_block, .Reels_item {
+  flex: 0 0 auto;    /* не растягиваемся, фиксируем в строчку */
+  min-width: 260px;  /* или ваша ширина слайда */
+}
+
 
     .target h2 {
         font-size: 20px;
@@ -613,7 +633,7 @@
 
     #backToTop {
         bottom: 30px;
-        right: 30px;
+        right: 10px;
         width: 40px;
         height: 40px;
     }

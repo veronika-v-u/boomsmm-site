@@ -89,41 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   })();
 
-  /*function initSlider(selector) {
-    const slider = document.querySelector(selector);
-    if (!slider) return;
-    let isDown = false, startX, scrollLeft;
-
-    // Общие обработчики
-    function onDown(e) {
-      isDown = true;
-      startX = (e.touches ? e.touches[0].pageX : e.pageX) - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
-    }
-    function onUp() {
-      isDown = false;
-    }
-    function onMove(e) {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = (e.touches ? e.touches[0].pageX : e.pageX) - slider.offsetLeft;
-      const walk = (x - startX) * 1;
-      slider.scrollLeft = scrollLeft - walk;
-    }
-
-    // мышь
-    slider.addEventListener('mousedown', onDown);
-    slider.addEventListener('mouseup', onUp);
-    slider.addEventListener('mouseleave', onUp);
-    slider.addEventListener('mousemove', onMove);
-
-    // сенсор
-    slider.addEventListener('touchstart', onDown);
-    slider.addEventListener('touchend', onUp);
-    slider.addEventListener('touchmove', onMove);
-  }*/
-
-    function initSlider(selector) {
+  function initSlider(selector) {
   const slider = document.querySelector(selector);
   if (!slider) return;
 
@@ -135,8 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let startX = 0;
   let startY = 0;
   let scrollLeft = 0;
-  const THRESHOLD = 8;      // минимальная дистанция для определения направления
-  const SPEED = 1.4;        // множитель скорости прокрутки по горизонтали (подбери при необходимости)
+  const THRESHOLD = 10;      // минимальная дистанция для определения направления
+  const SPEED = 1.0;        // множитель скорости прокрутки по горизонтали (подбери при необходимости)
 
   function onDown(e) {
     pointerDown = true;
