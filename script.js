@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   })();
 
-  function initSlider(selector) {
+  /*function initSlider(selector) {
   const slider = document.querySelector(selector);
   if (!slider) return;
 
@@ -150,6 +150,60 @@ document.addEventListener("DOMContentLoaded", () => {
   slider.addEventListener('mousedown', onMouseDown);
   document.addEventListener('mouseup', onMouseUp);
   document.addEventListener('mousemove', onMouseMove);
+}*/
+
+function initSlider(selector) {
+  const slider = document.querySelector(selector);
+  if (!slider) return;
+
+  slider.style.overflowX = slider.style.overflowX || 'auto';
+  slider.style.webkitOverflowScrolling = slider.style.webkitOverflowScrolling || 'touch';
+  slider.classList.remove('dragging');
+
+  let isDown = false;
+  let startX = 0;
+  let startY = 0;
+  let scrollLeft = 0;
+  const THRESHOLD = 10;
+  const SPEED = 1.0;
+
+  function onPointerDown(e) {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    isDown = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    scrollLeft = slider.scrollLeft;
+    slider.setPointerCapture(e.pointerId);
+    slider.classList.add('dragging');
+  }
+
+  function onPointerMove(e) {
+    if (!isDown) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+
+    if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > THRESHOLD) {
+      // вертикальный жест — отпускаем, позволяем странице скроллить
+      return;
+    }
+
+    // горизонтальный жест — предотвращаем лишние эффекты
+    e.preventDefault();
+    slider.scrollLeft = scrollLeft - dx * SPEED;
+  }
+
+  function onPointerUp(e) {
+    if (!isDown) return;
+    isDown = false;
+    try { slider.releasePointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+    slider.classList.remove('dragging');
+  }
+
+  slider.addEventListener('pointerdown', onPointerDown, { passive: false });
+  slider.addEventListener('pointermove', onPointerMove, { passive: false });
+  slider.addEventListener('pointerup', onPointerUp);
+  slider.addEventListener('pointercancel', onPointerUp);
+  // запасные мышиные слушатели не обязательны, pointer покрывает их
 }
 
   // инициализируем оба слайдера

@@ -281,19 +281,23 @@
     }
 
     .Reviews, .Reels, #trustGraphs {
-         display: flex;               /* или оставьте существующий flex */
+        display: flex;            
         gap: 12px;  
         overflow-x: auto;
         overflow-y: hidden;
         -webkit-overflow-scrolling: touch; /* iOS инерция */
         scroll-behavior: smooth;           /* плавный программный скролл */
         touch-action: pan-y;               /* разрешаем вертикальный пан браузеру по умолчанию */
-        -ms-overflow-style: auto;
-        scrollbar-width: thin;  
+        scrollbar-width: thin;
+        scroll-snap-type: x mandatory;
     }
-        .Reviews_block, .Reels_item, .trust_slide {
+    .Reviews_block, .Reels_item, .trust_slide {
         flex: 0 0 auto;    /* не растягиваемся, фиксируем в строчку */
         min-width: 260px;  /* или ваша ширина слайда */
+        scroll-snap-align: start; /* опционально */
+        -webkit-user-select: none;
+        user-select: none;
+        -ms-touch-action: pan-y;
     }
 
 
