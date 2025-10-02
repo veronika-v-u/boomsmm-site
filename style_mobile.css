@@ -77,6 +77,12 @@
         margin-right: 50px;
     }
 
+    .h1_content{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
     .h1_content h1{
         font-size: 25px;
         padding-left: 0;
