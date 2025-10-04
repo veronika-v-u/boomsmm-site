@@ -714,6 +714,7 @@ button:hover {
   text-align: center;
   justify-content: center;
   align-items: center;
+  margin-right: 0;
 }
 
 .feedback img{
@@ -1060,8 +1061,15 @@ footer{
   display: none;
 }
 
-.menu__box a[href="#"] { cursor: pointer; }
- #menu__toggle:checked ~ .menu__box { transform: translateX(0); visibility: visible; }
+.menu__box a[href="#"] { 
+  cursor: pointer; 
+}
+
+ #menu__toggle:checked ~ .menu__box { 
+  transform: translateX(0); 
+  visibility: visible; 
+}
+
 .trust_dots{
   display: none;
 }
