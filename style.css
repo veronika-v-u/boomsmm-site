@@ -272,89 +272,62 @@ button:hover {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  width: 85%;
+  margin: 0 auto;
 }
 
 .Reviews{
   display: flex;     
-  gap: 20px;
-  overflow-x: auto;               
-  scroll-behavior: smooth;         
-  -webkit-overflow-scrolling: touch; 
-  padding-left: 5%;
-}
-
-.Reviews::-webkit-scrollbar {
-  display: none;
-}
-
-.Reviews {
-  -ms-overflow-style: none;  /* IE/Edge */
-  scrollbar-width: none;     /* Firefox */
+  gap: 30px;
 }
 
 .Review h2{
   font-size: 30px;
-  padding-top: 40px;
+  padding-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.review_button{
+  display: flex;
+}
+
+.arrow_button button{
+  background-color: none;
+}
+
+.arrow_button button img{
+  width: 70px;
+}
+
 .Reviews_list{
   padding-left: 20px;
-  font-size: 15px;
-  width: 370px;
+  font-size: 13px;
+  width: 330px;
   height: 460px;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
   border-radius: 45px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 .Reviews_list h3{
   text-align: center;
-  justify-content: flex-end; 
 }
 
-.Reviews_img img{
-  width: 370px;
-  border-radius: 45px;
-}
 
 .Reviews_block {
   position: relative;
 }
 
-.Reviews_img img {
-  display: block;
-  height: auto;
-  position: relative;
-  top: -33.33%;
-  padding-left: 10px;
-}
-
-.Reviews_img {
-  position: relative;
-  z-index: 1;
-}
-  
 .Reviews_list {
-  position: relative;
-  margin-top: -50%;     
   padding-top: 20px; 
   padding-bottom: 30px;    
   height: 480px;           
   display: flex;
   flex-direction: column;
   align-items: center;       
-  z-index: 5;
   background-color: var(--color-bg-light);
-}
-
-.Reviews_list .professions {
-  margin-bottom: 30px; 
-  justify-content: flex-end; 
-  padding-top: 0;
-  padding-bottom: 40px;
 }
 
 .professions {
@@ -363,7 +336,123 @@ button:hover {
 }
 
 .Reviews_list p{
-  width: 350px;
+  width: 310px;
+}
+
+.review_button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.arrow_buttons.left,
+.arrow_buttons.right{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+.arrow_buttons.left{ left: 8px; }
+.arrow_buttons.right{ right: 8px; }
+
+.arrow_buttons button{
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+.arrow_buttons button img{ width: 100%; height: 100%; object-fit: contain; }
+
+.Reviews{
+  display: flex;
+  gap: 30px;                  
+  transition: transform 350ms ease;
+  will-change: transform;
+  width: max-content;      
+  margin: 0;                  
+  padding: 0;
+  box-sizing: border-box;     
+}
+
+.itc-slider__wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.itc-slider__item {
+  flex: 0 0 50%;
+  max-width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.review_button{
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;            
+  padding: 0 65px;            
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 900px){
+  .review_button{
+    padding: 0 65px;
+    overflow: hidden;
+  }
+
+  .Reviews{
+    width: calc(360px * 3 + 20px * 2);
+    margin: 0 auto;
+  }
+
+
+}
+
+@media (max-width: 899px){
+  .review_button{
+    padding: 0 48px;
+    overflow: hidden;
+    width: 340px;
+    margin: 0 auto;
+  }
+
+  .Reviews{
+    width: max-content;
+    margin: 0 auto;
+    padding-left: 0 !important; 
+  }
+
+  .Reviews_block{
+    flex: 0 0 auto;
+    width: 350px;
+    box-sizing: border-box;
+  }
+
+  .review_button::before{
+    content: "";
+    display: block;
+    height: 0;
+    margin: 0 auto;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
 }
 
 .team{
@@ -440,42 +529,6 @@ button:hover {
   height: 359px;
   border-radius: 20px;
   background-color: var(--color-primary);
-}
-
-.Reels {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  padding-left: 5%;
-}
-
-.Reels::-webkit-scrollbar {
-  display: none;
-}
-
-.Reels {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.Reels_item {
-  flex: 0 0 auto;        
-  aspect-ratio: 9 / 16; /* вертикальный формат как у Reels */
-  border-radius: 45px;
-  overflow: hidden;
-  box-shadow: 4px 4px 8px rgba(0,0,0,0.25);
-  background: var(--color-bg-light); 
-  margin-bottom: 20px;   
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-}
-
-.Reels_item iframe {
-  width: 100%;
-  border: none;
 }
 
 .target {

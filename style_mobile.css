@@ -219,22 +219,36 @@
         align-items: center;
     }
 
-    .Reviews_list{
-        padding-left: 20px;
-        font-size: 12px;
-        width: 300px;
-        height: 400px;
+    .Review{
+        width: 95%;
+
     }
 
-    .Reviews_img img{
-        width: 300px;
-        border-radius: 45px;
-        padding-left: 10px;
+    .Reviews{
+        width: 100%;
+    }
+
+    .Reviews_list{
+        padding-left: 20px;
+        font-size: 11px;
+        width: 220px;
+        height: 440px;
     }
 
     .Reviews_list p{
-        width: 280px;
+        width: 200px;
     }
+
+    /* стрелки поверх, слева/справа */
+    .arrow_buttons.left,
+    .arrow_buttons.right{
+        top: 45%;
+        width: 45px;
+        height: 45px;
+    }
+    .arrow_buttons.left{ left: 0px; }
+    .arrow_buttons.right{ right: 0px; }
+
 
     
     .team h2{
@@ -280,32 +294,6 @@
         margin-bottom: 100px;
         margin-top: 100px;
     }
-    
-    .Reels {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .Reviews, .Reels, #trustGraphs {
-        display: flex;            
-        gap: 12px;  
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch; /* iOS инерция */
-        scroll-behavior: smooth;           /* плавный программный скролл */
-        touch-action: pan-y;               /* разрешаем вертикальный пан браузеру по умолчанию */
-        scrollbar-width: thin;
-        scroll-snap-type: x mandatory;
-    }
-    .Reviews_block, .Reels_item, .trust_slide {
-        flex: 0 0 auto;    /* не растягиваемся, фиксируем в строчку */
-        min-width: 260px;  /* или ваша ширина слайда */
-        scroll-snap-align: start; /* опционально */
-        -webkit-user-select: none;
-        user-select: none;
-        -ms-touch-action: pan-y;
-    }
-
 
     .target h2 {
         font-size: 20px;

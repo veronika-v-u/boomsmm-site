@@ -46,107 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-
-(function() {
-    const slider = document.querySelector('.Reviews');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    // Для мыши
-    slider.addEventListener('mousedown', e => {
-      isDown = true;
-      slider.classList.add('active');
-      startX = e.pageX - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
-    });
-    slider.addEventListener('mouseleave', () => {
-      isDown = false;
-      slider.classList.remove('active');
-    });
-    slider.addEventListener('mouseup', () => {
-      isDown = false;
-      slider.classList.remove('active');
-    });
-    slider.addEventListener('mousemove', e => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 1;  // скорость прокрутки = 1
-      slider.scrollLeft = scrollLeft - walk;
-    });
-
-    // Для тачскрина
-    slider.addEventListener('touchstart', e => {
-      startX = e.touches[0].pageX - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
-    });
-    slider.addEventListener('touchmove', e => {
-      const x = e.touches[0].pageX - slider.offsetLeft;
-      const walk = (x - startX) * 1;  // скорость прокрутки = 1
-      slider.scrollLeft = scrollLeft - walk;
-    });
-  })();
-
-function initSlider(selector) {
-  const slider = document.querySelector(selector);
-  if (!slider) return;
-
-  slider.style.overflowX = slider.style.overflowX || 'auto';
-  slider.style.webkitOverflowScrolling = slider.style.webkitOverflowScrolling || 'touch';
-  slider.classList.remove('dragging');
-
-  let isDown = false;
-  let startX = 0;
-  let startY = 0;
-  let scrollLeft = 0;
-  const THRESHOLD = 10;
-  const SPEED = 1.0;
-
-  function onPointerDown(e) {
-    if (e.pointerType === 'mouse' && e.button !== 0) return;
-    isDown = true;
-    startX = e.clientX;
-    startY = e.clientY;
-    scrollLeft = slider.scrollLeft;
-    slider.setPointerCapture(e.pointerId);
-    slider.classList.add('dragging');
-  }
-
-  function onPointerMove(e) {
-    if (!isDown) return;
-    const dx = e.clientX - startX;
-    const dy = e.clientY - startY;
-
-    if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > THRESHOLD) {
-      // вертикальный жест — отпускаем, позволяем странице скроллить
-      return;
-    }
-
-    // горизонтальный жест — предотвращаем лишние эффекты
-    e.preventDefault();
-    slider.scrollLeft = scrollLeft - dx * SPEED;
-  }
-
-  function onPointerUp(e) {
-    if (!isDown) return;
-    isDown = false;
-    try { slider.releasePointerCapture(e.pointerId); } catch (err) { /* ignore */ }
-    slider.classList.remove('dragging');
-  }
-
-  slider.addEventListener('pointerdown', onPointerDown, { passive: false });
-  slider.addEventListener('pointermove', onPointerMove, { passive: false });
-  slider.addEventListener('pointerup', onPointerUp);
-  slider.addEventListener('pointercancel', onPointerUp);
-  // запасные мышиные слушатели не обязательны, pointer покрывает их
-}
-
-  // инициализируем оба слайдера
-  initSlider('.Reviews');
-  initSlider('.Reels');
-
   // JS: показываем кнопку после прокрутки первой секции и скроллим наверх по клику
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('backToTop');
@@ -442,4 +341,96 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+//отзывы 
+(function(){
+  const track = document.getElementById('reviewsTrack');
+  if (!track) return;
 
+  const leftBtn = document.querySelector('.arrow_buttons.left button');
+  const rightBtn = document.querySelector('.arrow_buttons.right button');
+
+  let perView = getPerView(); // 3 или 1
+  let isMoving = false;
+  let index = 0;
+
+  function getPerView(){
+    return window.matchMedia('(max-width: 899px)').matches ? 1 : 3;
+  }
+
+  function clearClones(){
+    Array.from(track.children).forEach(n => { if (n.classList && n.classList.contains('__clone')) n.remove(); });
+  }
+
+  function buildClones(){
+    clearClones();
+    const items = Array.from(track.querySelectorAll('.Reviews_block'));
+    perView = getPerView();
+    if (items.length === 0) return;
+    const first = items.slice(0, perView).map(n => n.cloneNode(true));
+    const last = items.slice(-perView).map(n => n.cloneNode(true));
+    last.reverse().forEach(n => { n.classList.add('__clone'); track.insertBefore(n, track.firstChild); });
+    first.forEach(n => { n.classList.add('__clone'); track.appendChild(n); });
+  }
+
+  function stepSize(){
+    const item = track.querySelector('.Reviews_block');
+    if (!item) return 0;
+    const style = getComputedStyle(track);
+    const gap = parseFloat(style.gap) || 20;
+    return item.getBoundingClientRect().width + gap;
+  }
+
+  function applyTransform(noTransition){
+    const step = stepSize();
+    if (noTransition) track.style.transition = 'none';
+    else track.style.transition = 'transform 350ms ease';
+    const offset = -index * step;
+    track.style.transform = `translateX(${offset}px)`;
+    if (noTransition){
+      requestAnimationFrame(()=> track.style.transition = '');
+    }
+  }
+
+  function setInitial(){
+    perView = getPerView();
+    buildClones();
+    index = perView;
+    // позиция должна центрироваться так, чтобы видна была область из .review_button::before
+    applyTransform(true);
+  }
+
+  function move(dir){
+    if (isMoving) return;
+    isMoving = true;
+    index += dir;
+    applyTransform(false);
+    track.addEventListener('transitionend', onEnd, { once: true });
+  }
+
+  function onEnd(){
+    const total = track.children.length;
+    if (index < perView){
+      index = index + (total - perView*2);
+      applyTransform(true);
+    } else if (index >= total - perView){
+      index = index - (total - perView*2);
+      applyTransform(true);
+    }
+    isMoving = false;
+  }
+
+  if (rightBtn) rightBtn.addEventListener('click', ()=> move(1));
+  if (leftBtn) leftBtn.addEventListener('click', ()=> move(-1));
+
+  let rt;
+  window.addEventListener('resize', ()=> {
+    clearTimeout(rt);
+    rt = setTimeout(()=> {
+      const newPer = getPerView();
+      if (newPer !== perView) setInitial();
+      else applyTransform(true);
+    }, 120);
+  });
+
+  requestAnimationFrame(setInitial);
+})();
