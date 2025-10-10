@@ -67,10 +67,22 @@ nav ul li a:hover {
   padding-right: 20px;
 }
 
+.icon:hover img {
+    content: url('resurse/pink_tg.png'); 
+}
+
+.icon:nth-child(2):hover img {
+    content: url('resurse/pink_inst.png');
+}
+
 .phone a{
     font-size: 16px;
     color: var(--color-bg-light);        
     text-decoration: none;
+}
+
+.phone:hover a{
+  color: var(--color-accent);
 }
 
 .hero{
@@ -563,51 +575,6 @@ button:hover {
   width: 300px;
 }
 
-.price{
-  display: flex;
-  color: var(--color-bg-light);
-  gap: 25px;
-}
-
-.price h2{
-  font-size: 28px;
-  text-align: left;
-  margin-bottom: 0;
-}
-
-.info_cost{
-  background-color: var(--color-accent);
-  width: 468.87px;
-  height: 366.53px;
-  border-radius: 30px;
-  padding: 20px 0 0 20px;
-  overflow-wrap: break-word;
-}
-
-.info_cost h2:first-of-type {
-  font-size: 25px;
-  margin: 0;
-  padding-top: 0;
-}
-
-.info_cost p {
-  font-size: 19px;
-  margin: 8px 0 16px;
-}
-
-.info_cost h2:nth-of-type(2) {
-  font-size: 30px;
-  margin: 0 0 20px;
-  padding-top: 0;
-}
-
-.info_cost ul {
-  font-size: 13px;
-  margin: 0;
-  padding-left: 20px;        
-  line-height: 1.4;          
-}
-
 .price_button button{
   display: flex;
   width: 250px;
@@ -844,7 +811,7 @@ button:hover {
 
 .price_inst_info{
   width: 371.01px;
-  height: 363.48px;
+  height: 400px;
   background-color: var(--color-accent);
   color: var(--color-bg-light);
   border-radius: 20px;
