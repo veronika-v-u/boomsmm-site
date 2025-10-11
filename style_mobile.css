@@ -8,8 +8,9 @@
     
     .hamburger-menu{
         display: block;
-        position: fixed;
+        position: absolute;
     }
+
 
     .menu__box{
         padding-left: 20px;
@@ -211,6 +212,11 @@
         display: none;
     }
     
+    .Reviews_list{
+        padding-left: 0;
+        margin-bottom: 20px;
+    }
+
     .Review h2{
         font-size: 20px;
         padding-top: 40px;
@@ -232,7 +238,7 @@
         padding-left: 20px;
         font-size: 11px;
         width: 220px;
-        height: 440px;
+        height: auto;
     }
 
     .Reviews_list p{
@@ -285,6 +291,14 @@
         font-size: 15px;
     }
 
+    #teams{
+        display: flex;
+        gap: 0;
+    }
+    
+    #teams img{
+        width: 300px;
+    }
     .main_text{
         padding-left: 0;
         margin-left: 0;
@@ -556,7 +570,7 @@
         width: 190px;
         height: 50px;;
         font-size: 15px;
-        margin: 20px 0 50px 0;
+        margin: 20px 0 20px 0;
     }
 
     .link_tg_b img{
@@ -575,7 +589,6 @@
     .cases__footer .arrow_button img{
         width: 50px;
     }
-
     
     .price_inst_key h3{
         font-size: 20px;
@@ -592,15 +605,16 @@
 
     .price_inst_info{
         width: 280px;
-        height: 340px;
+        height: 350px;
         padding: 10px 20px 20px 30px;
         font-size: 14px;
     }
 
-    .price_inst_info h4{
+    .price_inst_info h3{
         font-size: 20px;
         padding: 15px 0 10px 0;
         margin: 0;
+        text-align: left;
     }
 
     .price_inst_info ul{
@@ -609,6 +623,12 @@
     }
     .contacts h2{
         font-size: 25px;
+    }
+
+    .link_tg_b_ask button{
+        width: 225px;
+        margin: 90px 0 50px 0;
+        padding: 0 20px 0 20px;
     }
 
     .contact_info{

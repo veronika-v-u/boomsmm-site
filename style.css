@@ -5,7 +5,7 @@
   --color-bg-light:  #FFFFFF;   /* светлый фон */
   --color-bg-dark:   #F5F5F5;   /* тёмный фон */
   --color-text:      #2B2B2B;   /* основной текст */
-  --color-backgraund: #DED5D7;
+  --color-backgraund: #d1d1d1;
   --content-max-w: 1152px;
 }
 
@@ -489,6 +489,7 @@ button:hover {
   display: flex;
   gap: 20px;
   align-items: flex-start;
+  margin-left: 6%;
 }
 
 .teams.main-row {
@@ -505,9 +506,15 @@ button:hover {
   font-size: 15px;
 }
 
+#teams{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px;
+}
+
 #teams img{
   margin-top: 50px;
-  width: 300px;
+  width: 350px;
 }
 
 .teams h3{
@@ -798,8 +805,8 @@ button:hover {
 }
 
 .price_inst_key h3{
-  font-size: 25px;
-  margin-top: 50px;
+  font-size: 20px;
+  margin-top: 20px;
 }
 
 .price_inst{
@@ -811,7 +818,7 @@ button:hover {
 
 .price_inst_info{
   width: 371.01px;
-  height: 400px;
+  height: 370px;
   background-color: var(--color-accent);
   color: var(--color-bg-light);
   border-radius: 20px;
@@ -822,6 +829,7 @@ button:hover {
 .price_inst_info p{
   padding: 0;
   margin: 0;
+
 }
 
 .price_inst_info h4{
@@ -830,7 +838,10 @@ button:hover {
   margin: 0;
 }
 
-.plus_info p{
+.price_inst_info ul{
+  padding-left: 20px;
+}
+.plus_info{
   font-weight: bold;
 }
 
@@ -979,17 +990,34 @@ footer{
 #menu__toggle {
   opacity: 0;
 }
-/* стилизуем кнопку */
+
+header {
+  position: relative; /* важно: базовый контекст для абсолютного позиционирования */
+  /* остальные ваши стили */
+}
+
+/* кнопка внутри header, позиция относительно header */
 .menu__btn {
-  display: flex; /* используем flex для центрирования содержимого */
-  align-items: center;  /* центрируем содержимое кнопки */
-  position: fixed;
-  top: 30px;
-  left: 30px;
+  position: absolute;
+  top: 0;
+  right: 60px; /* или left: 30px — в зависимости от желаемого места */
   width: 26px;
   height: 26px;
+  z-index: 50;
   cursor: pointer;
-  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* меню‑панель можно оставить fixed/absolute в зависимости от UX:
+   если хотите, чтобы панель выезжала поверх всей страницы, можно оставить fixed,
+   но кнопку при этом лучше привязать к header, как выше. */
+.menu__box {
+  position: fixed; /* можно оставить, как у вас */
+  top: 0;
+  left: -100%;
+  /* остальное как есть */
 }
 /* добавляем "гамбургер" */
 .menu__btn > span,
