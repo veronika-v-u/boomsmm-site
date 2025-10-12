@@ -323,6 +323,51 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'ArrowRight') { if (current < total - 1) { current++; update(); } }
   });
 
+
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchEndX = 0;
+  let isTouching = false;
+  const SWIPE_THRESHOLD = 50; // px
+
+  container.addEventListener('touchstart', (e) => {
+    if (!e.touches || e.touches.length === 0) return;
+    isTouching = true;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    touchEndX = touchStartX;
+  }, {passive: true});
+
+  container.addEventListener('touchmove', (e) => {
+    if (!isTouching || !e.touches || e.touches.length === 0) return;
+    touchEndX = e.touches[0].clientX;
+    // не вызываем preventDefault: позволяем вертикальной прокрутке работать
+  }, {passive: true});
+
+  container.addEventListener('touchend', (e) => {
+    if (!isTouching) return;
+    isTouching = false;
+    const dx = touchEndX - touchStartX;
+    const dy = Math.abs((e.changedTouches && e.changedTouches[0]) ? (e.changedTouches[0].clientY - touchStartY) : 0);
+
+    // Игнорируем жесты с доминирующей вертикальной составляющей (чтобы не мешать скроллу)
+    if (dy > Math.abs(dx)) return;
+
+    if (dx > SWIPE_THRESHOLD) {
+      // свайп вправо — предыдущий
+      if (current > 0) {
+        current--;
+        update();
+      }
+    } else if (dx < -SWIPE_THRESHOLD) {
+      // свайп влево — следующий
+      if (current < total - 1) {
+        current++;
+        update();
+      }
+    }
+  }, {passive: true});
+
   // Инициализация: показываем первый слайд и синхронизируем точки
   update();
 
