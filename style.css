@@ -1055,9 +1055,10 @@ header {
 }
 
 .menu__box img{
-  width: 30px;
+  width: 25px;
+  padding-top: 10px;
   margin-left: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 
 #phone{
@@ -1067,9 +1068,9 @@ header {
 /* элементы меню */
 .menu__item {
   display: block;
-  padding: 12px 24px;
+  padding: 5px 20px;
   color: var(--color-bg-light);
-  font-size: 20px;
+  font-size: 15px;
   text-decoration: none;
 }
 
@@ -1116,6 +1117,10 @@ header {
  #menu__toggle:checked ~ .menu__box { 
   transform: translateX(0); 
   visibility: visible; 
+}
+
+#logo_menu img{
+  width: 100px;
 }
 
 .trust_dots{

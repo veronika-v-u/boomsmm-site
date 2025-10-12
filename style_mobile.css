@@ -307,8 +307,16 @@
     .backstage{
         margin-bottom: 100px;
         margin-top: 100px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
     }
 
+    .backstage div{
+        width: 160px;
+        height: 160px;
+
+    }
     .target h2 {
         font-size: 20px;
         padding-top: 100px;
@@ -466,7 +474,7 @@
     }
             
     .insta_row {
-         display: grid;
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
         justify-content: center;  
         gap: 10px;         
@@ -477,7 +485,7 @@
         align-items: center;   
         gap: 10px;            
         text-align: left;
-        font-size: 10px;
+        font-size: 8px;
         width: 140px;
     }
 
