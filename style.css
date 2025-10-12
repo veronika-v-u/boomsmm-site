@@ -1,11 +1,11 @@
 :root {
   /* базовая палитра */
-  --color-primary:   #7DA9F7;   /* основной голубой */
-  --color-accent:    #E38C9B;   /* акцентный розовый */
+  --color-primary:   #203F9A;   /* основной голубой */
+  --color-accent:    #E84797;   /* акцентный розовый */
   --color-bg-light:  #FFFFFF;   /* светлый фон */
   --color-bg-dark:   #F5F5F5;   /* тёмный фон */
   --color-text:      #2B2B2B;   /* основной текст */
-  --color-backgraund: #d1d1d1;
+  --color-backgraund: #F8F3EA;
   --content-max-w: 1152px;
 }
 
@@ -912,7 +912,7 @@ button:hover {
 }
 
 footer{
-  background-color: var(--color-backgraund);
+  background-color: var(--color-accent);
   margin-top: 170px;
 }
 
@@ -956,7 +956,7 @@ footer{
 }
 
 .footer_nav li a:hover {
-    color: var(--color-accent);
+    color: var(--color-primary);
 }
 
 #backToTop {
@@ -1050,7 +1050,7 @@ header {
   margin: 0;
   padding: 80px 0;
   list-style: none;
-  background-color: var(--color-backgraund);
+  background-color: var(--color-primary);
   box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
 }
 
