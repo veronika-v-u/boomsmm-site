@@ -6,6 +6,13 @@
         overflow-x: hidden; /* осторожно: скрывает горизонтальную полосу прокрутки — использовать если нет альтернатив */
     }
     
+    header{
+        position: fixed;
+        width: 100%;
+        z-index: 100;
+        height: 35px;
+    }
+
     .hamburger-menu{
         display: block;
         position: absolute;
@@ -46,6 +53,7 @@
     .hero{
         max-width: 100%;
         height: 743px;
+        padding-top: 94px;
     }
 
     .out_container{
@@ -260,7 +268,7 @@
     
     .team h2{
         font-size: 20px;
-        padding-top: 50px;
+        padding-top: 0px;
     }
 
     .teams{
@@ -548,12 +556,13 @@
         flex-direction: column;
         align-items: center;
         gap: 20px;
-        margin-bottom: 100px;
+        margin-bottom: 50px;
     }
 
     .examples h2{
         font-size: 20px;
         margin-top: 30px;
+        text-transform: lowercase;
     }
 
     .ex_img_phone img{
@@ -596,6 +605,7 @@
 
     
     .cases__footer {
+        margin-top: 40px;
         margin-bottom: 20px;
     }
 
@@ -607,10 +617,11 @@
         width: 50px;
     }
     
-    .price_inst_key h3{
+    .price_inst_key h2{
         font-size: 20px;
-        margin-top: 30px;
+        margin-top: 60px;
         text-align: center;
+        text-transform: uppercase;
     }
 
     .price_inst{
@@ -640,6 +651,7 @@
     }
     .contacts h2{
         font-size: 25px;
+        text-transform: uppercase;
     }
 
     .link_tg_b_ask button{
@@ -661,10 +673,14 @@
 
     .contact_info img{
         margin-top: 50px;
-        width: 360px;
+        width: 300px;
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    footer{
+        margin-top: 40px;
     }
 
     .footer_nav nav{
