@@ -305,9 +305,13 @@
         gap: 0;
     }
     
+    #teams p{
+        font-size: 15px;
+    }
     #teams img{
         width: 300px;
     }
+
     .main_text{
         padding-left: 0;
         margin-left: 0;
@@ -342,6 +346,7 @@
 
     .target h3 {
         font-size: 15px;
+        margin-bottom: 10px;
     }
 
     .trust_graphs {
@@ -516,7 +521,7 @@
 
     .cases_section h1{
         font-size: 25px;
-        margin-bottom: 20px;
+        margin-bottom: 0;
     }
 
     .cases_section h3{
